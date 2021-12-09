@@ -8,8 +8,9 @@ public class Client {
     String IPString;
     int port;
 
+    // if no arguments are in the command line
     if (args.length == 0) {
-      // instantiate new client class
+      // assigning variables to be used in constructor
       IPString = "localhost";
       port = 12345;
     } else {
@@ -18,6 +19,7 @@ public class Client {
       port = Integer.parseInt(argumentsFromCL[1]);
     }
 
+    // constructing object
     Client client = new Client(IPString, port);
 
     // establish connection
