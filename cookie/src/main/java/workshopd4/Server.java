@@ -12,18 +12,23 @@ public class Server {
   // above line runs server class
   // String[] args is equivalent to '12345 cookie_file.txt'
   public static void main(String[] args) throws IOException {
-    /*
-     * if (args.length == 0) {
-     * Server server = new Server(12345, "cookie_file.txt");
-     * } else {
-     * Server server = new Server(Integer.parseInt(args[0]), args[1]);
-     * }
-     */
-    Server server = new Server(45671,
-        "C:\\Users\\Box\\Documents\\NUS ISS\\Module 1 - Software Development F\\Workshops\\java-workshop-day-4\\cookie\\cookie_file.txt");
 
+    int port;
+    String fileString;
+    if (args.length == 0) {
+      port = 12345;
+      fileString = "cookie_file.txt";
+    } else {
+      port = Integer.parseInt(args[0]);
+      fileString = args[1];
+    }
+    // constructing object
+    Server server = new Server(port, fileString);
+    // start server
     server.startServer();
+    // establish connection
     server.connectServer();
+    // close connection
     server.closeConnection();
 
   }

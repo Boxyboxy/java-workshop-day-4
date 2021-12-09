@@ -5,14 +5,16 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Cookie {
 
   public static void main(String[] args) {
+
     Cookie cookie = new Cookie(
-        "C:\\Users\\Box\\Documents\\NUS ISS\\Module 1 - Software Development F\\Workshops\\java-workshop-day-4\\cookie\\cookie_file.txt");
+        "cookie_file.txt");
     cookie.loadCookie();
     System.out.println(cookie.cookieText());
 
@@ -23,6 +25,9 @@ public class Cookie {
 
   // constructor
   public Cookie(String fileName) {
+    Path currentRelativePath = Paths.get("");
+    String s = currentRelativePath.toAbsolutePath().toString();
+    fileName = s + "\\cookie\\" + fileName;
     this.textFile = Path.of(fileName).toFile();
     if (!this.textFile.exists()) {
       try {

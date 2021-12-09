@@ -1,19 +1,25 @@
 package workshopd4;
 
 import java.net.*;
-import java.util.ArrayList;
 import java.io.*;
 
 public class Client {
   public static void main(String[] args) throws IOException {
-    /*
-     * String[] argumentsFromCL = args[0].split(":");
-     * Client client = new Client(argumentsFromCL[0],
-     * Integer.parseInt(argumentsFromCL[1]);
-     */
+    String IPString;
+    int port;
 
-    // instantiate new client class
-    Client client = new Client("localhost", 45671);
+    if (args.length == 0) {
+      // instantiate new client class
+      IPString = "localhost";
+      port = 12345;
+    } else {
+      String[] argumentsFromCL = args[0].split(":");
+      IPString = argumentsFromCL[0];
+      port = Integer.parseInt(argumentsFromCL[1]);
+    }
+
+    Client client = new Client(IPString, port);
+
     // establish connection
     client.establishConnection();
     // storing fortune cookie message in a string
@@ -40,6 +46,7 @@ public class Client {
   // establish connection, throwing IOException required
   public void establishConnection() throws IOException {
     this.socket = new Socket(this.IPaddress, this.clientPort);
+    System.out.println("Relevant information on the socket: " + this.socket);
   }
 
   public String requestCookie() throws IOException {
