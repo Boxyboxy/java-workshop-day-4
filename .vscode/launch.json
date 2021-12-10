@@ -22,7 +22,8 @@
       "name": "Launch Client",
       "request": "launch",
       "mainClass": "workshopd4.Client",
-      "projectName": "cookie"
+      "projectName": "cookie",
+      "args": "localhost:12345"
     },
     {
       "type": "java",
@@ -36,7 +37,8 @@
       "name": "Launch Server",
       "request": "launch",
       "mainClass": "workshopd4.Server",
-      "projectName": "cookie"
+      "projectName": "cookie",
+      "args": "12345 cookie_file.txt"
     }
   ],
   "compounds": [
